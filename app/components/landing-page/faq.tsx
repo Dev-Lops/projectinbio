@@ -28,7 +28,7 @@ export function Faq() {
       <h3 className="text-white text-2xl font-bold">Dúvidas frequentes</h3>
       <div className="grid grid-cols-2 gap-3">
         {faq.map((item) => (
-          <FaqItem title={item.title} description={item.description} />
+          <FaqItem key={item.title} title={item.title} description={item.description} />
         ))}
       </div>
     </div >

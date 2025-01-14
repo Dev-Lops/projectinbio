@@ -11,7 +11,7 @@ export default function Hero() {
         <h1 className="text-white text-5xl font-bold leading-[64px]">Seus projetos e redes sociais em um único link</h1>
         <h2 className="text-xl leading-6">Crie sua própria pagina de projetos e compartilhe eles com o mundo.
           <br />
-          Acompanhe o engajamento com o Analytics de cliques e acessos.
+          Acompanhe o engajamento com o Analytics de cliques.
         </h2>
         <div className="flex items-center gap-2 w-full mt-[10vh]">
           <span className="text-white text-xl">projectinbio.com/</span>

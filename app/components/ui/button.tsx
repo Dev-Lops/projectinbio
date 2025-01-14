@@ -10,7 +10,7 @@ export default function Button({
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button {...props}
-      className={cn("text-white p-3 rounded-xl whitespace-nowrap hover:opacity-95 disabled:opacity-70 disabled:cursor-not-allowed",
+      className={cn("text-white p-3 rounded-xl whitespace-nowrap hover:opacity-85 disabled:opacity-70 disabled:cursor-not-allowed",
         variant === "primary" && "bg-accent-purple",
         variant === "secondary" && "bg-background-tertiary",
         variant === "ghost" && "bg-border-primary",
