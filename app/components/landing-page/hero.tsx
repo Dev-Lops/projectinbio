@@ -32,7 +32,6 @@ export default function Hero() {
             <ProjectCard />
           </div>
         </div>
-
       </div>
     </div>
   );
