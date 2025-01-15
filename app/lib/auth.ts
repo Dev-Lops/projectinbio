@@ -1,22 +1,22 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { FirestoreAdapter } from "@auth/firebase-adapter";
-import { cert } from "firebase-admin/app";
+import { db, firebaseCert } from "./firebase";
+import Google from "next-auth/providers/google";
+import { Timestamp } from "firebase-admin/firestore";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const { auth, handlers, signIn, signOut } = NextAuth({
   adapter: FirestoreAdapter({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    }),
+    credential: firebaseCert,
   }),
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      checks: ["pkce"],
-    }),
-  ],
-  secret: process.env.NEXTAUTH_SECRET, // Certifique-se de que esta variável está configurada
+  providers: [Google],
+  events: {
+    createUser: async ({ user }) => {
+      if (!user.id) return;
+
+      await db.collection("users").doc(user.id).update({
+        createdAt: Timestamp.now().toMillis(),
+      });
+    },
+  },
 });
