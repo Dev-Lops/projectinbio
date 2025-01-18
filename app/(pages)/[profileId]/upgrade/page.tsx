@@ -1,15 +1,20 @@
-import { Header } from "@/app/components/landing-page/header";
-import Button from "@/app/components/ui/button";
 
-export default function UpgradePage() {
+
+import { Metadata } from "next";
+import PlanButtons from "./plan-buttons";
+import Header from "@/app/components/landing-page/header";
+
+export const metadata: Metadata = {
+  title: "ProjectInBio - Upgrade",
+  description: "ProjectInBio - A plataforma de gestão de projetos em biologia.",
+};
+
+export default async function UpgradePage() {
   return (
     <div className="h-screen flex flex-col items-center justify-center gap-4">
       <Header />
       <h2 className="text-2xl font-bold">Escolha o plano</h2>
-      <div className="flex gap-4">
-        <Button>R$ 9,90 / mês</Button>
-        <Button>R$ 99,90 vitalício</Button>
-      </div>
+      <PlanButtons />
     </div>
-  )
+  );
 }

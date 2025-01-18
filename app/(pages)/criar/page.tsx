@@ -1,7 +1,8 @@
-import { Header } from "@/app/components/landing-page/header";
+
 
 import { Rocket } from "lucide-react";
 import CreateLinkForm from "./create-link-form";
+import Header from "@/app/components/landing-page/header";
 
 
 export default function CriarPage() {

@@ -1,35 +1,52 @@
-import { ProjectCard } from "../commons/project-card";
-import { TotalVisits } from "../commons/total-visits";
-import UserCard from "../commons/user-card";
-import Button from "../ui/button";
-import TextInput from "../ui/text-input";
+import ProjectCard from "../commons/project-card";
+import TotalVisits from "../commons/total-visits";
+import UserCard from "../commons/user-card/user-card";
 
-export default function Hero() {
+
+import CreateNow from "../ui/create-now";
+
+export default function Hero({
+  texts,
+}: {
+  texts?: {
+    title: string;
+    description: string;
+  };
+}) {
   return (
     <div className="flex h-screen">
       <div className="w-full flex flex-col gap-2 mt-[35vh]">
-        <h1 className="text-white text-5xl font-bold leading-[64px]">Seus projetos e redes sociais em um único link</h1>
-        <h2 className="text-xl leading-6">Crie sua própria pagina de projetos e compartilhe eles com o mundo.
+        <h1 className="text-5xl font-bold text-white leading-[64px]">
+          {texts?.title || "Seus projetos e redes sociais em um único link"}
+        </h1>
+        <h2 className="text-xl leading-6">
+          {texts?.description ||
+            "Crie sua própria página de projetos e compartilhe eles com mundo."}
           <br />
-          Acompanhe o engajamento com o Analytics de cliques.
+          Acompanhe o engajamento com Analytics de cliques
         </h2>
-        <div className="flex items-center gap-2 w-full mt-[10vh]">
-          <span className="text-white text-xl">projectinbio.com/</span>
-          <TextInput type="text" placeholder="Seu link" />
-          <Button>Criar agora</Button>
-        </div>
+        <CreateNow />
       </div>
-      <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4b2dbb,transparent_55%)]">
+
+      <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)]">
         <div className="relative">
           <UserCard />
           <div className="absolute -bottom-[7%] -right-[45%]">
-            <TotalVisits />
+            <TotalVisits totalVisits={1342} />
           </div>
           <div className="absolute top-[20%] -left-[45%] -z-10">
-            <ProjectCard />
+            <ProjectCard
+              name="Projeto 1"
+              description="Descrição do projeto 1"
+              img="/project1.jpg"
+            />
           </div>
           <div className="absolute -top-[5%] -left-[55%] -z-10">
-            <ProjectCard />
+            <ProjectCard
+              name="Projeto 2"
+              description="Descrição do projeto 2"
+              img="/project2.jpg"
+            />
           </div>
         </div>
       </div>
